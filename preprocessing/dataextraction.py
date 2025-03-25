@@ -3,10 +3,11 @@ from typing import List, Dict
 from PyPDF2 import PdfReader
 from docx import Document
 
+
 class DocumentProcessor:
     """A class to process PDF and DOCX files and extract text content."""
     
-    def __init__(self, input_directory: str, output_directory: str):
+    def __init__(self, input_directory:str, output_directory:str):
         self.input_directory = input_directory
         self.output_directory = output_directory
         
@@ -64,9 +65,12 @@ class DocumentProcessor:
         return results
 
 def main():
-    # Configure input and output directories
-    input_dir = "input_documents"
-    output_dir = "extracted_text"
+    # Get the current script's directory
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    # Configure input and output directories relative to the script location
+    input_dir = os.path.join(current_dir, '..', 'datafiles', 'Input_files','sample resume')
+    output_dir = os.path.join(current_dir, '..', 'datafiles', 'Output_files')
     
     # Create processor instance
     processor = DocumentProcessor(input_dir, output_dir)
@@ -75,7 +79,7 @@ def main():
     results = processor.process_files()
     
     # Print results
-    print("\nProcessing Complete!")
+    print("\nProcessing Complete!")         
     print("-" * 50)
     for input_file, output_file in results.items():
         print(f"Processed {input_file} -> {output_file}")

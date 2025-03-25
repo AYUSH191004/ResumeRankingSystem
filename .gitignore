@@ -1,0 +1,15 @@
+plan_for_resume_ranking_system.txt
+datafiles/Input_files/*
+datafiles/Output_files/*
+.conda
+__pycache__/
+*.pyc
+*.pyo
+*.db
+*.sqlite
+*.sql.bak
+.vscode/
+.idea/
+logs/
+*.log
+
