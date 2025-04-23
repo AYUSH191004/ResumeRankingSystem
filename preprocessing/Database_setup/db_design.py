@@ -98,10 +98,15 @@ class AnalysisResults(Base):
     candidate = relationship("Candidate", back_populates="analysis_results")
 
 def generate_schema():
+<<<<<<< HEAD:preprocessing/Database_setup/db_design.py
     # Create engine (use any database URL, even in-memory SQLite)
     engine = create_engine("mysql+pymysql://root:123456@localhost:3306/resume_db")
     
     # Generate create table statements
+=======
+    DATABASE_URL = "mysql+pymysql://root:123456@localhost:3306/resume_db"
+    engine = create_engine(DATABASE_url)                                
+>>>>>>> 36bb9fe051b282693c12cb32171afa347749032b:Database_setup/db_design.py
     schema = []
     for table in [Candidate, Skill, Project, WorkExperience, Certification, Ranking, AnalysisResults]:
         create_table = CreateTable(table.__table__)
