@@ -99,7 +99,7 @@ class AnalysisResults(Base):
 
 def generate_schema():
     # Create engine (use any database URL, even in-memory SQLite)
-    engine = create_engine('sqlite:///:memory:')
+    engine = create_engine("mysql+pymysql://root:123456@localhost:3306/resume_db")
     
     # Generate create table statements
     schema = []

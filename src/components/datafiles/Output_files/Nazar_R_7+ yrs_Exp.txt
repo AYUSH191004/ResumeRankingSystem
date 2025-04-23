@@ -1,0 +1,68 @@
+RESUME
+Nazar .R Data Scientist www.linkedin.com/in/nazarr/
+Mobile: 91-8951605480 www.Github.com/rnazardsm
+Email ID: rnazards@gmail.com www.kaggle.com/nazardsm
+
+
+Summary:
+Data Scientist with Master in Computer Engineering 7+ Years of Experience in Software Development and Web Analytics Implementation and 3+ years of Experience Using Predictive Modelling, Data Processing, Data Mining Algorithms, Natural language processing (NLP), hands-on experience leveraging machine learning, Deep Learning Models to Solve Challenging Business Problems.
+
+Job Responsibility:
+Achievement-Driven Professional with a Relevant Experience of 3+ Years.
+Deep involvement in handling the Critical Deliverables, Benchmarking Solutions, Driving Key Metrics, Maintaining Productivity and ensuring Projects are Profitable.
+Experience in Statistics, Machine Learning & NLP and Python Methodologies.
+Experience in Visualization Tools Like Tableau Software, Google Analytics, Adobe Analytics
+To understand the business use cases from clients and convert them into a well-defined problem statement and explain it to the development team.
+To Develop Algorithms and Predictive Models to Drive Insights and Business Values from Data
+To identify data sets required to develop predictive models for solving internal and external business problems
+Identify and implement use cases which might help the organization business development To interpret results and produce actionable business insights that
+lead to measurable business and consumer experience performance improvements
+Experience in building applications with Artificial Intelligence, Machine Learning, Deep Learning, Recurrent Neural Network, Computer vision, NLP and Python.
+Worked on Deployment and optimization of various computer vision, Machine learning and NLP solution on web based application, Azure platform using kubernetes services and Raspberry pi.
+Designing the neural networks using Tensor flow for various internal projects within the company and working on Chatbots using NLP
+
+Technical Skills:
+
+Skils and Knowledge Areas:
+
+
+
+
+Tools and Libraries Used:
+
+
+Educational Summary:
+
+MBA from NIBM (National Institute of Business Management), Chennai with 84.19% (2017-2018) Tamil Nadu
+BCA from Bishop Heber College (Autonomous) Trichy with 64.17% (2004-2007) Tamil Nadu.
+
+Professional Experience:
+
+Associated with Zinavo Technologies - Bangalore 2012 to Till Now
+Zinavo Technologies, an ISO 9001-2008 certified company, extending its services in Software & IT Development Company in Bangalore, India
+Data Scientist From March 2016 to Till Now-3+ Years
+Digital Analytics Consultant From April 2014-March -2016-2 Year
+Digital Marketing Engineer From April 2012  March-2014- 2 Years
+
+Accountabilities:
+Core Python,Numpy,Pandas,Matplotlib,SCIKIT Learn, Tensor flow, Tableau
+Selecting features, building and optimizing classifiers using machine learning techniques
+Data mining using state-of-the-art methods
+Extending company s data with third party sources of information when needed
+Enhancing data collection procedures to include information that is relevant for building analytic systems
+Processing, cleansing, and verifying the integrity of data used for analysis
+Doing ad-hoc analysis and presenting results in a clear manner
+Creating automated anomaly detection systems and constant tracking of its performance
+
+Projects Summary:
+
+
+
+
+
+
+Declaration:
+I hereby declare that the above information is true and correct to the best of my knowledge and belief.
+PLACE: Bangalore Yours Faithfully
+DATE: (R.Nazar)
+THANK YOU

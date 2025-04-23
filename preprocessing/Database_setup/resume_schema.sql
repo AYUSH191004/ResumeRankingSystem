@@ -1,4 +1,4 @@
-CREATE TABLE candidates (
+CREATE TABLE  candidates (
 	candidate_id INTEGER NOT NULL, 
 	name VARCHAR(255), 
 	email VARCHAR(255), 
@@ -14,8 +14,6 @@ CREATE TABLE candidates (
 	UNIQUE (email)
 );
 
-
-
 CREATE TABLE  skills (
 	skill_id INTEGER NOT NULL, 
 	candidate_id INTEGER, 
@@ -25,7 +23,7 @@ CREATE TABLE  skills (
 	FOREIGN KEY(candidate_id) REFERENCES candidates (candidate_id)
 );
 
-CREATE TABLE projects (
+CREATE TABLE  projects (
 	project_id INTEGER NOT NULL, 
 	candidate_id INTEGER, 
 	project_title VARCHAR(255), 
@@ -36,7 +34,7 @@ CREATE TABLE projects (
 	FOREIGN KEY(candidate_id) REFERENCES candidates (candidate_id)
 );
 
-CREATE TABLE work_experience (
+CREATE TABLE  work_experience (
 	work_id INTEGER NOT NULL, 
 	candidate_id INTEGER, 
 	company_name VARCHAR(255), 
@@ -72,7 +70,7 @@ CREATE TABLE rankings (
 	FOREIGN KEY(candidate_id) REFERENCES candidates (candidate_id)
 );
 
-CREATE TABLE analysis_results (
+CREATE TABLE  analysis_results (
 	id INTEGER NOT NULL, 
 	candidate_id INTEGER, 
 	analysis_date DATETIME, 

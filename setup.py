@@ -1,4 +1,15 @@
 from setuptools import setup, find_packages
+from typing import list
+hypendot="-e ."
+def get_requirements(file_path:str)->list[str]:
+    requirements=[]
+    with open('requirements.txt', 'r') as f:
+        requirements=f.readlines()
+        requirements=[req.replace("n","") for req in requirements ]
+        if hypendot in requirements:
+            requirements.remove(hypendot)
+        return requirements
+
 
 setup(
     name="src",
@@ -6,14 +17,5 @@ setup(
     author="AYUSH",
     author_email="ayushrajputparihar@gmail.com",
     packages=find_packages(),
-    install_requires=[
-        'numpy==1.24.3',
-        'pandas==2.0.3',
-        'PyPDF2==3.0.1',
-        'python-docx==1.0.1',
-        'nltk==3.8.1',
-        'flask==3.0.0',
-        'flask_cors==4.0.0',
-        'requests==2.31.0',
-    ]
+    install_requires=get_requirements('requirements.txt')
 )

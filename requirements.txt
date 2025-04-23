@@ -1,10 +1,30 @@
-numpy==1.24.3
-pandas==2.0.3
-PyPDF2==3.0.1
-python-docx==1.0.1
-nltk==3.8.1
-spacy==3.7.2
-flask==3.0.0
-flask_cors==4.0.0
-requests==2.31.0
--e.
+# Resume Parsing
+pdfminer.six
+python-docx
+PyMuPDF
+# Natural Language Processing
+nltk
+spacy
+textblob
+transformers
+
+# Feature Extraction and Similarity
+scikit-learn
+sentence-transformers
+
+# Database
+SQLAlchemy
+
+# Optional UI
+streamlit
+pdf2image
+Pillow
+
+# Utilities
+pandas
+numpy
+
+# Other
+regex
+
+ 
