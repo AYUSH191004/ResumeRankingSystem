@@ -7,8 +7,9 @@ from sqlalchemy.orm import sessionmaker
 import spacy
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import re
 
-from preprocessing.database.models import Base, Resume
+from preprocessing.dataextraction import Base, Resume
 from preprocessing.models.patterns import (
     SECTION_PATTERNS, SKILL_KEYWORDS, 
     CONTACT_PATTERNS, DATE_PATTERNS
@@ -22,6 +23,9 @@ class DocumentProcessor:
         self.logger = setup_logger(__name__)
         self.input_directory = input_directory
         self.output_directory = output_directory
+        
+        # Load spacy model once
+        self.nlp_model = spacy.load('en_core_web_lg')
         
         # Initialize database connection
         if db_uri:
@@ -47,11 +51,12 @@ class DocumentProcessor:
     def process_pdf(self, file_path: str) -> Optional[dict]:
         """Enhanced PDF extraction with section detection"""
         try:
-            text = ""
+            texts = []
             with open(file_path, 'rb') as file:
                 reader = PdfReader(file)
                 for page in reader.pages:
-                    text += clean_text(page.extract_text()) + "\n"
+                    texts.append(clean_text(page.extract_text()))
+            text = "\n".join(texts)
             return self._analyze_resume(text)
         except Exception as e:
             self.logger.error(f"PDF processing error: {str(e)}")
