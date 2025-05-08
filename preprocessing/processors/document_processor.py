@@ -38,15 +38,16 @@ class DocumentProcessor:
 
         # Define ORM models for the schema tables
         metadata = MetaData()
-        metadata.reflect(bind=self.engine)
+        if hasattr(self, 'engine'):
+            metadata.reflect(bind=self.engine)
 
-        self.candidates_table = metadata.tables.get('candidates')
-        self.skills_table = metadata.tables.get('skills')
-        self.projects_table = metadata.tables.get('projects')
-        self.work_experience_table = metadata.tables.get('work_experience')
-        self.certifications_table = metadata.tables.get('certifications')
-        self.rankings_table = metadata.tables.get('rankings')
-        self.analysis_results_table = metadata.tables.get('analysis_results')
+            self.candidates_table = metadata.tables.get('candidates')
+            self.skills_table = metadata.tables.get('skills')
+            self.projects_table = metadata.tables.get('projects')
+            self.work_experience_table = metadata.tables.get('work_experience')
+            self.certifications_table = metadata.tables.get('certifications')
+            self.rankings_table = metadata.tables.get('rankings')
+            self.analysis_results_table = metadata.tables.get('analysis_results')
 
     def process_pdf(self, file_path: str) -> Optional[dict]:
         """Enhanced PDF extraction with section detection"""
@@ -74,8 +75,7 @@ class DocumentProcessor:
 
     def _analyze_with_nlp(self, text: str) -> dict:
         """Perform NLP analysis on resume text"""
-        model = spacy.load('en_core_web_lg')
-        doc = model(text)
+        doc = self.nlp_model(text)
         
         # Extract entities
         entities = {
@@ -109,16 +109,11 @@ class DocumentProcessor:
             for name, pattern in SECTION_PATTERNS.items()
         }
         
-        # Extract skills
-        skills = [
-            skill for skill in SKILL_KEYWORDS
-            if re.search(rf'\b{re.escape(skill)}\b', text, re.I)
-        ]
-        
         # Extract contact info
         contacts = {
             'emails': list(set(re.findall(CONTACT_PATTERNS['email'], text, re.I))),
-            'phones': list(set(re.findall(CONTACT_PATTERNS['phone'], text)))
+            'phones': list(set(re.findall(CONTACT_PATTERNS['phone'], text))),
+            'urls': list(set(re.findall(CONTACT_PATTERNS['url'], text, re.I)))
         }
         
         # Find dates in experience/education sections
@@ -131,7 +126,6 @@ class DocumentProcessor:
         analysis = {
             'raw_text': text,
             'sections': sections,
-            'skills': skills,
             'contacts': contacts,
             'dates': dates
         }
@@ -165,26 +159,30 @@ class DocumentProcessor:
         finally:
             session.close()
 
-    def process_files(self) -> Dict[str, str]:
+    def _process_single_file(self, file_path: str) -> Optional[dict]:
+        """Process a single file based on its extension."""
+        if file_path.lower().endswith('.pdf'):
+            return self.process_pdf(file_path)
+        elif file_path.lower().endswith('.docx'):
+            return self.process_docx(file_path)
+        else:
+            self.logger.warning(f"Unsupported file type: {file_path}")
+            return None
+
+    def process_files(self) -> Dict[str, dict]:
         """Process all PDF/DOCX files, analyze with NLP and store in DB."""
         results = {}
-        
+
         for filename in os.listdir(self.input_directory):
             file_path = os.path.join(self.input_directory, filename)
-            
-            if filename.lower().endswith('.pdf'):
-                analysis = self.process_pdf(file_path)
-            elif filename.lower().endswith('.docx'):
-                analysis = self.process_docx(file_path)
-            else:
-                continue
-                
-            # Save to database
+            analysis = self._process_single_file(file_path)
+
             if analysis:
                 self.save_to_db(filename, analysis)
-            
+
             results[filename] = {
                 'analysis': analysis
             }
-            
-        return results 
+
+        self.logger.info(f"Processed {len(results)} files from {self.input_directory}")
+        return results

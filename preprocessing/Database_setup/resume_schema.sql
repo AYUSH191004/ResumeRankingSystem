@@ -1,3 +1,17 @@
+CREATE TABLE job_descriptions (
+	job_id INT NOT NULL AUTO_INCREMENT,
+	title VARCHAR(255) NOT NULL,
+	description TEXT NOT NULL,
+	required_skills TEXT NOT NULL,
+	required_experience FLOAT NOT NULL,
+	required_education VARCHAR(255) NOT NULL,
+	location VARCHAR(255) NOT NULL,
+	salary_range VARCHAR(255),
+	posted_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	status VARCHAR(20) DEFAULT 'Active',
+	PRIMARY KEY (job_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 CREATE TABLE  candidates (
 	candidate_id INTEGER NOT NULL, 
 	name VARCHAR(255), 
@@ -61,13 +75,51 @@ CREATE TABLE certifications (
 CREATE TABLE rankings (
 	ranking_id INTEGER NOT NULL, 
 	candidate_id INTEGER, 
-	skill_score FLOAT, 
-	experience_score FLOAT, 
-	project_score FLOAT, 
-	certification_score FLOAT, 
-	overall_score FLOAT, 
-	PRIMARY KEY (ranking_id), 
+	job_id INTEGER,
+	skill_score FLOAT,
+	experience_score FLOAT,
+	education_score FLOAT,
+	text_similarity_score FLOAT,
+	location_score FLOAT,
+	overall_score FLOAT,
+	skill_matches TEXT,
+	missing_skills TEXT,
+	match_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+	match_status VARCHAR(20) DEFAULT 'Pending',
+	PRIMARY KEY (ranking_id),
+	FOREIGN KEY(candidate_id) REFERENCES candidates (candidate_id),
+	FOREIGN KEY(job_id) REFERENCES job_descriptions (job_id)
+);
+
+CREATE TABLE job_matches (
+	match_id INTEGER NOT NULL,
+	job_id INTEGER,
+	candidate_id INTEGER,
+	match_score FLOAT,
+	skill_match_percentage FLOAT,
+	experience_match_percentage FLOAT,
+	education_match_percentage FLOAT,
+	text_similarity FLOAT,
+	location_match BOOLEAN,
+	match_details TEXT,
+	created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+	status VARCHAR(20) DEFAULT 'New',
+	notes TEXT,
+	PRIMARY KEY (match_id),
+	FOREIGN KEY(job_id) REFERENCES job_descriptions (job_id),
 	FOREIGN KEY(candidate_id) REFERENCES candidates (candidate_id)
+);
+
+CREATE TABLE match_history (
+	history_id INTEGER NOT NULL,
+	match_id INTEGER,
+	status_change VARCHAR(20),
+	changed_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+	changed_by VARCHAR(255),
+	notes TEXT,
+	PRIMARY KEY (history_id),
+	FOREIGN KEY(match_id) REFERENCES job_matches (match_id)
 );
 
 CREATE TABLE  analysis_results (
