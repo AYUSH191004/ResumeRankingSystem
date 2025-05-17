@@ -92,6 +92,11 @@ A scalable, AI-based resume screening system that helps recruiters:
 
 * Ranking: Sorts resumes based on their relevance scores.
 
+## Results
+* Resume upload sucessfully logs:![Screenshot 2025-05-17 225151](https://github.com/user-attachments/assets/5858bad8-7bef-4e10-9d11-4a72a619960e)
+* Job Description saved sucessfully into Database(MYSQL/resume_db)![Screenshot 2025-05-17 231947](https://github.com/user-attachments/assets/bc60828f-a69f-4090-bd3f-5d2a58ae1772)
+
+
 ## 🤝 Contributing
 Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
 
