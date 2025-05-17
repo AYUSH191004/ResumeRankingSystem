@@ -92,7 +92,7 @@ A scalable, AI-based resume screening system that helps recruiters:
 
 * Ranking: Sorts resumes based on their relevance scores.
 
-##🤝 Contributing
+## 🤝 Contributing
 Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
 
 
