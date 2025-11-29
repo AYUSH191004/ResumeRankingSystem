@@ -346,7 +346,7 @@ class ResumeProcessor:
             stmt = text(self.INSERT_CANDIDATE)
             result = session.execute(stmt, data)
             session.commit()  # Commit to get the auto-incremented ID
-            return result.lastrowid
+            return result.inserted_primary_key[0]
         except IntegrityError as e:
             self.logger.error(f"Integrity error inserting candidate: {str(e)}")
             session.rollback()
