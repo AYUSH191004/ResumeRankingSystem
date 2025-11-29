@@ -398,26 +398,26 @@ class ResumeProcessor:
             
             # Extract text based on file type
             if file_path.lower().endswith('.pdf'):
-                text = self.extract_text_from_pdf(file_path)
+                resume_text = self.extract_text_from_pdf(file_path)
             elif file_path.lower().endswith(('.docx', '.doc')):
-                text = self.extract_text_from_docx(file_path)
+                resume_text = self.extract_text_from_docx(file_path)
             else:
                 self.logger.warning(f"Unsupported file format: {file_path}")
                 return None
                 
-            if not text:
+            if not resume_text:
                 self.logger.error(f"Failed to extract text from {file_path}")
                 return None
             
             # Extract information
-            name = self.extract_name(text)
-            email = self.extract_email(text)
-            phone = self.extract_phone(text)
-            location = self.extract_location(text)
-            skills = self.extract_skills(text)
-            experience, work_history = self.extract_experience(text)
-            education = self.extract_education(text)
-            links = self.extract_links(text)
+            name = self.extract_name(resume_text)
+            email = self.extract_email(resume_text)
+            phone = self.extract_phone(resume_text)
+            location = self.extract_location(resume_text)
+            skills = self.extract_skills(resume_text)
+            experience, work_history = self.extract_experience(resume_text)
+            education = self.extract_education(resume_text)
+            links = self.extract_links(resume_text)
             if links:
                 self.logger.info(f"Extracted links: {links}")
             
@@ -434,7 +434,7 @@ class ResumeProcessor:
                     'experience': experience,
                     'education': education['degree'],
                     'institution': education['institution'],
-                    'resume_text': text[:65535]  # Limit text to MySQL TEXT field size
+                    'resume_text': resume_text[:65535]  # Limit text to MySQL TEXT field size
                 }
                 
                 # Insert candidate and get ID
