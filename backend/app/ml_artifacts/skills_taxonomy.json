@@ -1,0 +1,31 @@
+{
+  "programming_languages": [
+    "Python", "Java", "JavaScript", "TypeScript", "C++", "C#", "Go", "Rust",
+    "Ruby", "PHP", "Swift", "Kotlin", "R", "Scala", "Perl", "Shell"
+  ],
+  "frameworks": [
+    "React", "Angular", "Vue.js", "Next.js", "Django", "Flask", "FastAPI",
+    "Spring Boot", "Express.js", "Node.js", "Laravel", "Ruby on Rails",
+    "ASP.NET", "Flutter", "React Native", "TensorFlow", "PyTorch", "Keras"
+  ],
+  "databases": [
+    "PostgreSQL", "MySQL", "MongoDB", "Redis", "Elasticsearch", "Cassandra",
+    "Oracle", "SQL Server", "DynamoDB", "Firebase", "Neo4j", "SQLite"
+  ],
+  "cloud": [
+    "AWS", "Azure", "Google Cloud", "GCP", "Heroku", "DigitalOcean",
+    "Docker", "Kubernetes", "Terraform", "Ansible"
+  ],
+  "tools": [
+    "Git", "GitHub", "GitLab", "Jira", "Jenkins", "CircleCI", "Travis CI",
+    "Webpack", "Babel", "npm", "yarn", "pip", "Maven", "Gradle"
+  ],
+  "soft_skills": [
+    "Leadership", "Communication", "Team Collaboration", "Problem Solving",
+    "Project Management", "Agile", "Scrum", "Critical Thinking"
+  ],
+  "certifications": [
+    "AWS Certified", "Azure Certified", "PMP", "Scrum Master", "CISSP",
+    "Google Cloud Certified", "CompTIA"
+  ]
+}
